@@ -4,6 +4,7 @@
 
 import csv
 import itertools
+import time
 
 class Board():
 
@@ -140,16 +141,19 @@ class Board():
         box = self.spaceToBox(space[0], space[1])
         self.valsInBoxes[box].remove(value)
 
-        self.unsolvedSpaces.add(value)
+        self.unsolvedSpaces.add(space)
 
     # returns True if the space is empty and on the board,
     # and assigning value to it if not blocked by any constraints
     def isValidMove(self, space, value):
-        if value in self.valsInRows[space[0]]:
+        if space not in board.unsolvedSpaces:
             return False
-        if value in self.valsInCols[space[1]]:
+        elif value in self.valsInRows[space[0]]:
+            return False
+        elif value in self.valsInCols[space[1]]:
             return False
         box = self.spaceToBox(space[0], space[1])
+
         if value in self.valsInBoxes[box]:
             return False
 
@@ -220,7 +224,16 @@ class Solver:
 
 if __name__ == "__main__":
     # change this to the input file that you'd like to test
-    board = Board('tests/test-2-medium/19.csv')
+    start = time.time()
+    sudokuPath = "tests/test-4-tough/00.csv"
+    board = Board(sudokuPath)
     s = Solver()
     s.solveBoard(board)
     board.print()
+    end = time.time()
+    print()
+    print("-----------------------------------------------------")
+    timeTaken = (end - start)
+    print("Sudoku Algo Stats:")
+    print(f"Time elapsed: {timeTaken}")
+    print(f"Test file set was: {sudokuPath}")
