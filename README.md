@@ -66,6 +66,9 @@ An example 9x9 Sudoku puzzle in CSV format (saved as `example.csv`):
 ,,4,9,,,,
 ,,,7,,2,,
 ```
+---
+## Notes:
+My program achieved 5 hours for `/test-4-hard/19.csv` and achieved 5.16 seconds in `/named-boards/bowser.csv`
 
 ## License
 
@@ -74,8 +77,3 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 ## Acknowledgements
 
 This project is part of an assignment for the **B351/Q351: Introduction to Artificial Intelligence** course at Indiana University.
-
----
-
-## Notes:
-My program achieved 5 hours for test-4-hard/19.csv and achieved 5.16 seconds in /named-boards/bowser.csv
